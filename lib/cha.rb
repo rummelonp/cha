@@ -15,7 +15,7 @@ module Cha
     ].freeze
 
     DEFAULT_ADAPTER    = Faraday.default_adapter
-    DEFAULT_ENDPOINT   = 'https://api.chatwork.com/v1/'
+    DEFAULT_ENDPOINT   = 'https://api.chatwork.com/v1'
     DEFAULT_API_TOKEN  = nil
     DEFAULT_PROXY      = nil
     DEFAULT_USER_AGENT = "Cha gem/#{VERSION}".freeze
