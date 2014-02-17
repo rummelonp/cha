@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Cha::Client do
   context :api do
     let(:api_token) { 'api_token' }
-    let(:client) { Cha.client(api_token: api_token) }
+    let(:client) { Cha.new(api_token: api_token) }
 
     describe '#me' do
       it 'should request the correct resource' do

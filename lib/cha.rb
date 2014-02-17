@@ -194,16 +194,16 @@ module Cha
 
   extend Configuration
 
-  def self.client(options = {})
+  def self.new(options = {})
     Client.new(options)
   end
 
   def self.respond_to_missing?(method_name, include_private = false)
-    client.respond_to?(method_name, include_private)
+    new.respond_to?(method_name, include_private)
   end
 
   def self.method_missing(method_name, *args, &block)
-    return super unless client.respond_to?(method_name)
-    client.send(method_name, *args, &block)
+    return super unless new.respond_to?(method_name)
+    new.send(method_name, *args, &block)
   end
 end

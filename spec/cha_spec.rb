@@ -22,15 +22,15 @@ describe Cha do
     end
   end
 
-  describe '.client' do
+  describe '.new' do
     it 'should return a Cha::Client' do
-      expect(Cha.client).to be_is_a(Cha::Client)
+      expect(Cha.new).to be_is_a(Cha::Client)
     end
   end
 
   describe '.respond_to?' do
     it 'should take an optional argument' do
-      expect(Cha.respond_to?(:client, true)).to be_true
+      expect(Cha.respond_to?(:new, true)).to be_true
     end
   end
 
