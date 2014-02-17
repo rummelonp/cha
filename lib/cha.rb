@@ -1,4 +1,5 @@
 # coding: utf-8
+
 require 'cha/version'
 require 'faraday'
 require 'faraday_middleware'
