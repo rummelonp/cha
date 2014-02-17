@@ -198,12 +198,12 @@ module Cha
     Client.new(options)
   end
 
-  def self.respond_to_missing?(method_name, include_private = false)
-    new.respond_to?(method_name, include_private)
-  end
-
   def self.method_missing(method_name, *args, &block)
     return super unless new.respond_to?(method_name)
     new.send(method_name, *args, &block)
+  end
+
+  def self.respond_to?(method_name, include_private = false)
+    new.respond_to?(method_name, include_private) || super
   end
 end
