@@ -179,6 +179,27 @@ describe Cha::Client do
   context 'when have error' do
     let(:client) { Cha.new }
 
-    pending
+    {
+      400 => Cha::BadRequest,
+      401 => Cha::NotAuthorized,
+      403 => Cha::Forbidden,
+      404 => Cha::NotFound,
+      499 => Cha::ClientError,
+      500 => Cha::InternalServerError,
+      501 => Cha::NotImplemented,
+      503 => Cha::ServiceUnavailable,
+      599 => Cha::ServerError,
+    }.each do |status, klass|
+      context "when HTTP status is #{status}" do
+        before do
+          stub_get('me')
+            .to_return(status: status, body: '{"errors":["nyan"]}')
+        end
+
+        it "should raise #{klass.name} error" do
+          expect { client.me }.to raise_error(klass)
+        end
+      end
+    end
   end
 end

@@ -20,6 +20,7 @@ module Cha
         builder.request :chat_work, api_token
         builder.request :multipart
         builder.request :url_encoded
+        builder.response :raise_error
         builder.response :mashify
         builder.response :json
         builder.adapter adapter
