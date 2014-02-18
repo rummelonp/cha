@@ -30,3 +30,15 @@ end
 def stub_get(path, endpoint = Cha.endpoint)
   stub_request(:get, endpoint + '/' + path)
 end
+
+def stub_post(path, endpoint = Cha.endpoint)
+  stub_request(:post, endpoint + '/' + path)
+end
+
+def stub_put(path, endpoint = Cha.endpoint)
+  stub_request(:put, endpoint + '/' + path)
+end
+
+def stub_delete(path, endpoint = Cha.endpoint)
+  stub_request(:delete, endpoint + '/' + path)
+end

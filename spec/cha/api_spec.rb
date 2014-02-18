@@ -42,7 +42,11 @@ describe Cha::API do
   end
 
   describe '#create_room' do
-    pending
+    it 'should request the correct resource' do
+      stub_post('rooms')
+        .with(body: {name: 'nyan', members_admin_ids: ['1']})
+      client.create_room('nyan', [1])
+    end
   end
 
   describe '#room' do
@@ -53,11 +57,19 @@ describe Cha::API do
   end
 
   describe '#update_room' do
-    pending
+    it 'should request the correct resource' do
+      stub_put('rooms/1')
+        .with(body: {name: 'wan'})
+      client.update_room(1, name: 'wan')
+    end
   end
 
   describe '#destroy_room' do
-    pending
+    it 'should request the correct resource' do
+      stub_delete('rooms/1')
+        .with(query: {action_type: 'leave'})
+      client.destroy_room(1, :leave)
+    end
   end
 
   describe '#room_members' do
@@ -68,7 +80,19 @@ describe Cha::API do
   end
 
   describe '#update_room_members' do
-    pending
+    it 'should request the correct resource' do
+      stub_put('rooms/1/members')
+        .with(body: {members_admin_ids: ['1']})
+      client.update_room_members(1, [1])
+    end
+  end
+
+  describe '#create_room_message' do
+    it 'should request the correct resource' do
+      stub_post('rooms/1/messages')
+        .with(body: {body: 'nyan'})
+      client.create_room_message(1, 'nyan')
+    end
   end
 
   describe '#room_messages' do
@@ -78,12 +102,11 @@ describe Cha::API do
     end
   end
 
-  describe '#create_room_message' do
-    pending
-  end
-
   describe '#room_message' do
-    pending
+    it 'should request the correct resource' do
+      stub_get('rooms/1/messages/1')
+      client.room_message(1, 1)
+    end
   end
 
   describe '#room_tasks' do
@@ -94,7 +117,11 @@ describe Cha::API do
   end
 
   describe '#create_room_task' do
-    pending
+    it 'should request the correct resource' do
+      stub_post('rooms/1/tasks')
+        .with(body: {body: 'nyan', to_ids: ['1']})
+      client.create_room_task(1, 'nyan', [1])
+    end
   end
 
   describe '#room_task' do
