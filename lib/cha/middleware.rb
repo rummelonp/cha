@@ -6,7 +6,9 @@ require 'faraday'
 require 'faraday_middleware'
 
 module Cha
+  # @private
   module Middleware
+    # @private
     class ChatWorkAuthentication < Faraday::Middleware
       KEY = 'X-ChatWorkToken'
 
@@ -23,12 +25,14 @@ module Cha
       end
     end
 
+    # @private
     class ParseJson < Faraday::Response::Middleware
       def parse(body)
         MultiJson.load(body) unless body.nil?
       end
     end
 
+    # @private
     class RaiseError < Faraday::Response::Middleware
       def on_complete(env)
         case env[:status].to_i

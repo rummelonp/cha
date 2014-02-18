@@ -6,6 +6,7 @@ require 'faraday_middleware'
 
 module Cha
   module Connection
+    # @return [Faraday::Connection]
     def connection(options = {})
       options = options.merge(
         headers: {
