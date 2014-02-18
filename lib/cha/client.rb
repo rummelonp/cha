@@ -7,10 +7,11 @@ require 'cha/request'
 
 module Cha
   class Client
-    include Configuration
     include Connection
     include Request
     include API
+
+    attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
     def initialize(options = {})
       options = Cha.options.merge(options)
