@@ -1,5 +1,13 @@
 # Cha
 
+[![Build Status](https://travis-ci.org/mitukiii/cha.png?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/mitukiii/cha.png)][codeclimate]
+[![Dependency Status](https://gemnasium.com/mitukiii/cha.png?travis)][gemnasium]
+
+[travis]: https://travis-ci.org/mitukiii/cha
+[codeclimate]: https://codeclimate.com/github/mitukiii/cha
+[gemnasium]: https://gemnasium.com/mitukiii/cha
+
 A Ruby wrapper for the ChatWork API
 
 ## Installation
