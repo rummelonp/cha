@@ -1,13 +1,11 @@
 # coding: utf-8
 
 module Cha
-  module Me
+  module API
     def me
       get('me')
     end
-  end
 
-  module My
     def my_status
       get('my/status')
     end
@@ -15,15 +13,11 @@ module Cha
     def my_tasks
       get('my/tasks')
     end
-  end
 
-  module Contacts
     def contacts
       get('contacts')
     end
-  end
 
-  module Rooms
     def rooms
       get('rooms')
     end

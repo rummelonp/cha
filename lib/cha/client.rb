@@ -10,10 +10,7 @@ module Cha
     include Configuration
     include Connection
     include Request
-    include Me
-    include My
-    include Contacts
-    include Rooms
+    include API
 
     def initialize(options = {})
       options = Cha.options.merge(options)
