@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.version       = Cha::VERSION
   spec.authors       = ['Kazuya Takeshima']
   spec.email         = ['mail@mitukiii.jp']
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ''
+  spec.summary       = %q{A Ruby wrapper for the ChatWork API}
+  spec.homepage      = 'http://github.com/mitukiii/cha'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
