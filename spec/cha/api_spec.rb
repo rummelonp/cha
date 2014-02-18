@@ -44,8 +44,8 @@ describe Cha::API do
   describe '#create_room' do
     it 'should request the correct resource' do
       stub_post('rooms')
-        .with(body: {name: 'nyan', members_admin_ids: ['1']})
-      client.create_room('nyan', [1])
+        .with(body: {name: 'nyan', members_admin_ids: '1,2', members_member_ids: '3,4', members_readonly_ids: '5,6'})
+      client.create_room('nyan', [1, 2], members_member_ids: [3, 4], members_readonly_ids: [5, 6])
     end
   end
 
@@ -82,8 +82,8 @@ describe Cha::API do
   describe '#update_room_members' do
     it 'should request the correct resource' do
       stub_put('rooms/1/members')
-        .with(body: {members_admin_ids: ['1']})
-      client.update_room_members(1, [1])
+        .with(body: {members_admin_ids: '1,2', members_member_ids: '3,4', members_readonly_ids: '5,6'})
+      client.update_room_members(1, [1, 2], members_member_ids: [3, 4], members_readonly_ids: [5, 6])
     end
   end
 
@@ -117,10 +117,13 @@ describe Cha::API do
   end
 
   describe '#create_room_task' do
+    let(:current_time) { Time.now }
+
     it 'should request the correct resource' do
       stub_post('rooms/1/tasks')
-        .with(body: {body: 'nyan', to_ids: ['1']})
-      client.create_room_task(1, 'nyan', [1])
+        .with(body: {body: 'nyan', to_ids: '1,2', limit: current_time.to_i.to_s})
+      client.create_room_task(1, 'nyan', [1, 2], limit: current_time)
+      client.create_room_task(1, 'nyan', [1, 2], limit: current_time.to_i)
     end
   end
 
@@ -142,6 +145,14 @@ describe Cha::API do
     it 'should request the correct resource' do
       stub_get('rooms/1/files/1')
       client.room_file(1, 1)
+
+      stub_get('rooms/1/files/1')
+        .with(query: {create_download_url: '1'})
+      client.room_file(1, 1, create_download_url: true)
+
+      stub_get('rooms/1/files/1')
+        .with(query: {create_download_url: '0'})
+      client.room_file(1, 1, create_download_url: false)
     end
   end
 end
