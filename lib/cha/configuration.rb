@@ -32,7 +32,7 @@ module Cha
     DEFAULT_PROXY      = nil
 
     # The user agent that will be sent to the API endpoint if none is set
-    DEFAULT_USER_AGENT = "Cha gem/#{VERSION}".freeze
+    DEFAULT_USER_AGENT = "Cha gem/#{VERSION}  (http://github.com/mitukiii/cha)".freeze
 
     # @private
     attr_accessor *VALID_OPTIONS_KEYS
