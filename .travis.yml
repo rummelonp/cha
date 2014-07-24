@@ -3,3 +3,6 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.2
+notifications:
+  webhooks:
+    - https://idobata.io/hook/travis_ci/f7467f11-26df-4e55-9bf0-47f5275d0c76
