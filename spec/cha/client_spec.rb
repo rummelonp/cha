@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require 'spec_helper'
-
 describe Cha::Client do
   context 'with module configuration' do
     let(:keys) { Cha::Configuration::VALID_OPTIONS_KEYS }

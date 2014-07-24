@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require 'spec_helper'
-
 describe Cha do
   after do
     Cha.reset
@@ -30,7 +28,7 @@ describe Cha do
 
   describe '.respond_to?' do
     it 'should take an optional argument' do
-      expect(Cha.respond_to?(:new, true)).to be_true
+      expect(Cha.respond_to?(:new, true)).to be_truthy
     end
   end
 

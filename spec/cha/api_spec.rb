@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require 'spec_helper'
-
 describe Cha::API do
   let(:api_token) { 'api_token' }
   let(:client) { Cha.new(api_token: api_token) }
