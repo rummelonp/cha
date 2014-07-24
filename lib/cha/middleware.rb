@@ -69,8 +69,8 @@ module Cha
       end
     end
 
-    Faraday.register_middleware :request, chat_work: ->{ ChatWorkAuthentication }
-    Faraday.register_middleware :response, json: ->{ ParseJson }
-    Faraday.register_middleware :response, raise_error: ->{ RaiseError }
+    Faraday::Request.register_middleware chat_work: ChatWorkAuthentication
+    Faraday::Response.register_middleware json: ParseJson
+    Faraday::Response.register_middleware raise_error: RaiseError
   end
 end
