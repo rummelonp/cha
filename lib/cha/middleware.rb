@@ -28,7 +28,7 @@ module Cha
     # @private
     class ParseJson < Faraday::Response::Middleware
       def parse(body)
-        MultiJson.load(body) unless body.nil?
+        MultiJson.load(body) unless /\A[[:space:]]*\z/ === body
       end
     end
 
