@@ -134,9 +134,13 @@ module Cha
     # Get list of chat room messages
     #
     # @param room_id [Integer] ID of chat room
+    # @param params [Hash] Hash of optional parameter
+    # @option params [Boolean] :force (nil)
+    #   Whether to get the latest 100 Reviews regardless of the non-acquired
     # @return [Array<Hashie::Mash>]
-    def room_messages(room_id)
-      get("rooms/#{room_id}/messages")
+    def room_messages(room_id, params = {})
+      force = boolean_to_integer(params[:force])
+      get("rooms/#{room_id}/messages", force: force)
     end
 
     # Create new message of chat room

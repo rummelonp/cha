@@ -94,9 +94,18 @@ describe Cha::API do
   end
 
   describe '#room_messages' do
-    it 'should request the correct resource' do
-      stub_get('rooms/1/messages')
-      client.room_messages(1)
+    context 'without force option' do
+      it 'should request the correct resource' do
+        stub_get('rooms/1/messages?force=0')
+        client.room_messages(1)
+      end
+    end
+
+    context 'with force option' do
+      it 'should request the correct resource' do
+        stub_get('rooms/1/messages?force=1')
+        client.room_messages(1, force: true)
+      end
     end
   end
 
